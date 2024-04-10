@@ -93,16 +93,18 @@ function setup() {
   questionDisplay.parent("question-container");
   questionDisplay.id = 'question';
 
-  questionNum++;
+  
 }
 
 function sendWristCommand(command) {
     switch (command) {
       case 74:
         direction = 'left';
+        choices.push(questions[questionNum][1]);
         break;
       case 76:
         direction = 'right';
+        choices.push(questions[questionNum][2]);
         break;
       /*
       case 73:
@@ -114,4 +116,5 @@ function sendWristCommand(command) {
       */
     }
     console.log(direction);
+    questionNum++;
   }
