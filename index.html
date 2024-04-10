@@ -7,41 +7,66 @@
   <style>
     .people_counter {
       text-align: center;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
     }
 
     .question-container {
       display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .question {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
-  <!-- Page 1: -->
-  <div class="question-container" id="question1">
-    <div class="question">Where would you like to study?</div>
-    <button onclick="answerQuestion(1, 'A Library')"> A Library</button>
-    <button onclick="answerQuestion(1, 'Outside')">Outside</button>
-  </div>
-
-  <!-- Page 2: -->
-  <div class="question-container" id="question2">
-    <div class="question">What part of campus?</div>
-    <button onclick="answerQuestion(2, 'Science Hill')">Science Hill</button>
-    <button onclick="answerQuestion(2, 'Cross Campus')">Cross Campus</button>
-  </div>
-
-  <!-- Page 3: -->
-  <div class="question-container" id="question3">
-    <div class="question">How long do plan to study </div>
-    <button onclick="answerQuestion(3, 'More than an hour')">More than an hour</button>
-    <button onclick="answerQuestion(3, 'Less than an hour')">Less than an hour</button>
-  </div>
-
   <div style="width:100%; text-align:center;">
-    <canvas id="draw" height="500" width="1000" style="border: 1px solid #111111; margin: auto" />
+    <canvas id="draw" height="500" width="1000"
+      style="border: 1px solid #111111; margin: auto; position: relative;"></canvas>
+    <!-- Add a div to display text -->
+    <div class="people_counter">I see 0 people</div>
+
+    <!-- Page 1: -->
+    <div class="question-container" id="question1">
+      <div class="question">Where would you like to study?</div>
+      <button onclick="answerQuestion(1, 'A Library')">A Library</button>
+      <button onclick="answerQuestion(1, 'Outside')">Outside</button>
+    </div>
+
+    <!-- Page 2: -->
+    <div class="question-container" id="question2">
+      <div class="question">What part of campus?</div>
+      <button onclick="answerQuestion(2, 'Science Hill')">Science Hill</button>
+      <button onclick="answerQuestion(2, 'Cross Campus')">Cross Campus</button>
+    </div>
+
+    <!-- Page 3: -->
+    <div class="question-container" id="question3">
+      <div class="question">How long do plan to study?</div>
+      <button onclick="answerQuestion(3, 'More than an hour')">More than an hour</button>
+      <button onclick="answerQuestion(3, 'Less than an hour')">Less than an hour</button>
+    </div>
   </div>
-  <!-- Add a div to display text -->
-  <div class="people_counter">I see 0 people</div>
+
   <!-- Add additional text using HTML elements -->
   <p>This is some additional text on the page.</p>
   <p>You can add more paragraphs like this.</p>
@@ -64,7 +89,6 @@
         // Handle answer for Question 3
       }
       showQuestion(questionNumber + 1); // Show the next question
-
     }
 
     function showQuestion(questionNumber) {
@@ -198,7 +222,6 @@
       canvas_arrow(ctx, origin[0] + cameraSizeCM[0] / 2, 1.5, origin[0] + cameraSizeCM[0] / 2 - 20, 1.5);
       ctx.stroke();
     }
-
   </script>
 </body>
 
