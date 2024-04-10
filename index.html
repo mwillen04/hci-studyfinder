@@ -34,6 +34,13 @@
       margin-bottom: 20px;
     }
 
+    .answer-input {
+      font-size: 16px;
+      padding: 8px;
+      margin-bottom: 20px;
+      width: 300px;
+    }
+
     button {
       font-size: 18px;
       padding: 10px 20px;
@@ -54,24 +61,24 @@
     <div class="question-container" id="question1">
       <div class="question">Where would you like to study?</div>
       <div class="question-text">Please select your preferred study location.</div>
-      <button onclick="answerQuestion(1, 'A Library')">A Library</button>
-      <button onclick="answerQuestion(1, 'Outside')">Outside</button>
+      <input type="text" class="answer-input" placeholder="Enter your answer here">
+      <button onclick="answerQuestion(1)">Submit</button>
     </div>
 
     <!-- Page 2: -->
     <div class="question-container" id="question2">
       <div class="question">What part of campus?</div>
       <div class="question-text">Please specify the area of the campus.</div>
-      <button onclick="answerQuestion(2, 'Science Hill')">Science Hill</button>
-      <button onclick="answerQuestion(2, 'Cross Campus')">Cross Campus</button>
+      <input type="text" class="answer-input" placeholder="Enter your answer here">
+      <button onclick="answerQuestion(2)">Submit</button>
     </div>
 
     <!-- Page 3: -->
     <div class="question-container" id="question3">
       <div class="question">How long do plan to study?</div>
       <div class="question-text">Please indicate your intended study duration.</div>
-      <button onclick="answerQuestion(3, 'More than an hour')">More than an hour</button>
-      <button onclick="answerQuestion(3, 'Less than an hour')">Less than an hour</button>
+      <input type="text" class="answer-input" placeholder="Enter your answer here">
+      <button onclick="answerQuestion(3)">Submit</button>
     </div>
   </div>
 
@@ -85,17 +92,11 @@
   <script type="text/javascript">
     var currentQuestion = 1;
 
-    function answerQuestion(questionNumber, answer) {
+    function answerQuestion(questionNumber) {
+      var answer = $(".question-container#question" + questionNumber + " .answer-input").val();
       console.log("Question " + questionNumber + " Answered: " + answer);
       // Here you can handle the answer as needed
       // For example, you might want to display feedback or proceed to the next question
-      if (questionNumber === 1) {
-        // Handle answer for Question 1
-      } else if (questionNumber === 2) {
-        // Handle answer for Question 2
-      } else if (questionNumber === 3) {
-        // Handle answer for Question 3
-      }
       showQuestion(questionNumber + 1); // Show the next question
     }
 
@@ -105,7 +106,6 @@
     }
 
     $(document).ready(function () {
-      frames.start();
       showQuestion(1); // Show the first question initially
     });
 
