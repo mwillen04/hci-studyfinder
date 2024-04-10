@@ -78,7 +78,23 @@ let questions = [["On or Off Campus?", "On Campus", "Off Campus"],
                  ["Indoor or Outdoor?", "Indoor", "Outdoor"]
                 ];
 
+let questionNum = 0;
+
 //------------------------------------------------------------------------------------
+
+function setup() {
+  let canvas = createCanvas(windowWidth/2, windowHeight/2);
+  canvas.parent("canvas-container");
+  frameRate(3);
+  stroke(255);
+  strokeWeight(10);
+
+  questionDisplay = createDiv(questions[questionNum][0]);
+  questionDisplay.parent("question-container");
+  questionDisplay.id = 'question';
+
+  questionNum++;
+}
 
 function sendWristCommand(command) {
     switch (command) {
