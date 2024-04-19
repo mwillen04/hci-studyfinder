@@ -44,7 +44,7 @@
       padding: 10px 20px;
       cursor: pointer;
     }
-
+    
   </style>
 </head>
 
@@ -90,27 +90,47 @@
   <script type="text/javascript">
     var currentQuestion = 1;
 
-  function showQuestion(questionNumber) {
-    if (questionNumber < 1 || questionNumber > 3) {
-      return;
+    function answerQuestion(questionNumber, answer) {
+      console.log("Question " + questionNumber + " Answered: " + answer);
+      // Here you can handle the answer as needed
+      // For example, you might want to display feedback or proceed to the next question
+      if (questionNumber === 1) {
+        // Handle answer for Question 1
+      } else if (questionNumber === 2) {
+        // Handle answer for Question 2
+      } else if (questionNumber === 3) {
+        // Handle answer for Question 3
+      }
+      showQuestion(questionNumber + 1); // Show the next question
     }
-    $(".question-container").hide();
-    $("#question" + questionNumber).show();
-    currentQuestion = questionNumber;
 
-    // Hide the back button if on the first question
-    if (currentQuestion === 1) {
-      $("#backButton").hide();
-    } else {
-      $("#backButton").show();
+    
+    function showQuestion(questionNumber) {
+      if (questionNumber < 1 || questionNumber > 3) {
+        return;
+      }
+      $(".question-container").hide();
+      $("#question" + questionNumber).show();
+      currentQuestion = questionNumber;
+
+      // Hide the back button if on the first question
+      if (currentQuestion === 1) {
+        $("#backButton").hide();
+      } else {
+        $("#backButton").show();
+      }
     }
-  }
 
-  $(document).ready(function () {
-    frames.start();
-    showQuestion(1);
-    $("#backButton").hide(); // Initially hide the back button
-  });
+    document.getElementById('backButton').addEventListener('click', function () {
+        showQuestion(currentQuestion - 1); // Decrement and show the previous question
+      });
+
+    $(document).ready(function () {
+      frames.start();
+      showQuestion(1);
+      $("#backButton").hide(); // Initially hide the back button
+    });
+
     var frames = {
       socket: null,
 
