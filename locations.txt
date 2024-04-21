@@ -1,0 +1,10 @@
+Location: Map Link, on or off campus, volume 1-3, private cubicles?, desktop computers?, yale id required?
+HLH17: https://maps.app.goo.gl/hZgn5LoPdjB8nVDZ6, on campus, 1, no, yes, yes
+SML: https://maps.app.goo.gl/v6q3KBZ4EmhpJX2f7, on campus, 1, yes, yes, no
+Bass: https://maps.app.goo.gl/JnYY86DLv5qN3kez9, on campus, 1, yes, yes, no
+Steep: https://maps.app.goo.gl/AH4HYguQzwfW7NYV6, on campus, 2, no, no, yes,
+Acorn: https://maps.app.goo.gl/asTKYx6xssXtzQJM6, on campus, 2, no, no, yes, 
+Underground: https://maps.app.goo.gl/WQQxiEX4ZLgj7Cib8, on campus, 3, no, no, yes
+Koffee: https://maps.app.goo.gl/Z9aJg3HGtTXKiyyj7, off campus, 2, yes, no, no
+Atticus: https://maps.app.goo.gl/kiN6FyCFv8h3ywbQ6, off campus, 3, no, no, no
+

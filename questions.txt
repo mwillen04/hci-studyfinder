@@ -1,0 +1,9 @@
+Bool: on_campus 
+Int: volume #1-3
+Bool: private_cubicles
+Bool: desktop_computers
+Bool: required_yale_id
+
+
+
+
