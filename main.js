@@ -1,120 +1,154 @@
-var host = "172.29.41.16:8888";
+var currentQuestion = 1;
 
-$(document).ready(function () {
-    frames.start();
-});
-
-
-// reading sensor data and getting direction of hand point
-var frames = {
-    socket: null,
-  
-    start: function() {
-      var url = "ws://" + host + "/frames";
-      frames.socket = new WebSocket(url);
-      frames.socket.onmessage = function (event) {
-        var command = frames.get_left_wrist_command(JSON.parse(event.data));
-        if (command !== null) {
-          sendWristCommand(command);
-        }
-      }
-    },
-  
-    get_left_wrist_command: function (frame) {
-      var command = null;
-      if (frame.people.length < 1) {
-        return command;
-      }
-  
-      // Normalize by subtracting the root (pelvis) joint coordinates
-      var pelvis_x = frame.people[0].joints[0].position.x;
-      var pelvis_y = frame.people[0].joints[0].position.y;
-      var pelvis_z = frame.people[0].joints[0].position.z;
-      var left_wrist_x = (frame.people[0].joints[7].position.x - pelvis_x) * -1;
-      var left_wrist_y = (frame.people[0].joints[7].position.y - pelvis_y) * -1;
-      var left_wrist_z = (frame.people[0].joints[7].position.z - pelvis_z) * -1;
-  
-      if (left_wrist_z < 100) {
-        return command;
-      }
-  
-      /*
-      if (left_wrist_x < 200 && left_wrist_x > -200) {
-        if (left_wrist_y > 500) {
-          command = 73; // UP
-        } else if (left_wrist_y < 100) {
-          command = 75; // DOWN
-        }
-      } 
-      */
-
-      if (left_wrist_y < 500 && left_wrist_y > 100) {
-        if (left_wrist_x > 200) {
-          command = 76; // RIGHT
-        } else if (left_wrist_x < -200) {
-          command = 74; // LEFT
-        }
-      }
-      return command;
-    }
-};
-
-//------------------------------------------------------------------------------------
-
-let direction = "none";
-let choices = []; // options selected by the student so far
-
-let optionLeft = $("#optionLeft"); // left option on screen
-let optionRight = $("#optionRight"); // right option on screen
-let selectedList = $("#selectedList"); // showing list of choices made so far
-
-
-// Input questions
-let questions = [["On or Off Campus?", "On Campus", "Off Campus"],
-                 ["Volume?", "Loud", "Quiet"],
-                 ["Business?", "Busy", "Sparse"],
-                 ["Brightness?", "Bright", "Dark"],
-                 ["Type of Light?", "Natural", "Artificial"],
-                 ["Indoor or Outdoor?", "Indoor", "Outdoor"]
-                ];
-
-let questionNum = 0;
-
-//------------------------------------------------------------------------------------
-
-function setup() {
-  let canvas = createCanvas(windowWidth/2, windowHeight/2);
-  canvas.parent("canvas-container");
-  frameRate(3);
-  stroke(255);
-  strokeWeight(10);
-
-  questionDisplay = createDiv(questions[questionNum][0]);
-  questionDisplay.parent("question-container");
-  questionDisplay.id = 'question';
-
-  
+function answerQuestion(questionNumber, answer) {
+  console.log(`Answered Question ${questionNumber}: ${answer}`);
+  showQuestion(questionNumber + 1);
 }
 
-function sendWristCommand(command) {
-    switch (command) {
-      case 74:
-        direction = 'left';
-        choices.push(questions[questionNum][1]);
-        break;
-      case 76:
-        direction = 'right';
-        choices.push(questions[questionNum][2]);
-        break;
-      /*
-      case 73:
-        direction = 'up';
-        break;
-      case 75:
-        direction = 'down';
-        break; 
-      */
-    }
-    console.log(direction);
-    questionNum++;
+function skipQuestion() {
+  console.log("Skipped Question");
+  showQuestion(currentQuestion + 1);
+}
+
+function showQuestion(questionNumber) {
+  const questions = document.querySelectorAll('.question-container');
+  questions.forEach(question => question.style.display = 'none');
+  const targetQuestion = document.getElementById(`question${questionNumber}`);
+  if (targetQuestion) {
+    targetQuestion.style.display = 'block';
+    currentQuestion = questionNumber;
   }
+}
+
+// document.getElementById('backButton').addEventListener('click', function () {
+//   showQuestion(currentQuestion - 1); // Decrement and show the previous question
+// });
+
+$(document).ready(function () {
+  // frames.start();
+  showQuestion(1);
+  $("#backButton").hide(); // Initially hide the back button
+});
+
+var frames = {
+  socket: null,
+
+  start: function () {
+    var ip = window.location.search;
+    ip = ip.split('ip=')[1];
+    console.log(`connecting to ${ip}`);
+    // websocket connection location
+    var url = "ws://" + ip + "/frames";
+
+    // canvas object
+    var c = document.getElementById("draw");
+    var ctx = c.getContext("2d");
+    // all real-world units are in mm unless denoted by CM
+    var personRadiusCM = 30;
+    // origin (x,y)
+    var origin = [c.width / 2, 0];
+
+    // subscribe to the /frames data
+    frames.socket = new WebSocket(url);
+    frames.socket.onmessage = function (event) {
+      console.log("HASDS")
+      let data = JSON.parse(event.data);
+      // clear the canvas
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      // draw the camera on the top of the screen
+      drawEnv(ctx, origin);
+
+      // draw each person as a circle
+      var i = 0;
+      if (data.people) {
+        var num_people = Object.keys(data.people).length;
+        $('.people_counter').text(`I see ${num_people} people`);
+        //console.log(num_people);
+        for (const [idx, person] of Object.entries(data.people)) {
+          // we want the data on the x,z plane from the camera's frame, so use indicies and 0 (x), 2 (Z)
+          // see: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes#arcs
+          // function definition is: arc(x, y, radius, startAngle, endAngle, counterclockwise)
+          ctx.strokeStyle = ctx.fillStyle = colors[i++];
+          ctx.beginPath();
+          let person_x = -1 * toCM(person.avg_position[0]) + origin[0]
+          let person_y = toCM(person.avg_position[2]) + origin[1]
+          ctx.arc(person_x, person_y, personRadiusCM, 0, 2 * Math.PI);
+          ctx.stroke();
+          // draw an arrow for the person, if we have detected an angle
+          if (person.theta) {
+            ctx.beginPath();
+            let th = person.theta;
+            let arrow_x = person_x + Math.cos(th) * personRadiusCM;
+            let arrow_y = person_y - Math.sin(th) * personRadiusCM;
+            //console.log(arrow_x);
+            //console.log(arrow_y);
+            canvas_arrow(ctx, person_x, person_y, arrow_x, arrow_y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+  }
+};
+
+
+// Helper Functions
+
+// Convert MM to CM
+function toCM(mm) {
+  return mm / 10;
+}
+
+// Draw an arrow
+// from: https://stackoverflow.com/questions/808826/draw-arrow-on-canvas-tag#answer-6333775
+function canvas_arrow(context, fromx, fromy, tox, toy) {
+  var headlen = 10; // length of head in pixels
+  var dx = tox - fromx;
+  var dy = toy - fromy;
+  var angle = Math.atan2(dy, dx);
+  context.moveTo(fromx, fromy);
+  context.lineTo(tox, toy);
+  context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+  context.moveTo(tox, toy);
+  context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+}
+
+// Setup an array of colors
+var tc = tinycolor({
+  r: Math.floor(Math.random() * 0xFF),
+  g: Math.floor(Math.random() * 0xFF),
+  b: Math.floor(Math.random() * 0xFF)
+});
+colors = [];
+var parts = 2 + Math.floor(Math.random() * 5);
+for (var i = 0; i < parts; i++) {
+  tc = tc.spin(360 / parts);
+  colors.push('#' + tc.toHex());
+}
+
+// Draw the environment
+function drawEnv(ctx, origin) {
+  var cameraSizeCM = [15, 5];
+
+  ctx.strokeStyle = ctx.fillStyle = '#333333';
+  ctx.fillRect(origin[0], origin[1] - cameraSizeCM[1] / 2, cameraSizeCM[0], cameraSizeCM[1])
+
+  ctx.font = "25px Arial";
+  ctx.fillText("x", 90, 20);
+  ctx.fillText("y", 8, 100);
+  ctx.beginPath();
+  canvas_arrow(ctx, 14, 14, 14, 80);
+  canvas_arrow(ctx, 14, 14, 80, 14);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.strokeStyle = ctx.fillStyle = '#0000FF';
+  canvas_arrow(ctx, origin[0] + cameraSizeCM[0] / 2, 1.5, origin[0] + cameraSizeCM[0] / 2, 20);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.strokeStyle = ctx.fillStyle = '#FF0000';
+  canvas_arrow(ctx, origin[0] + cameraSizeCM[0] / 2, 1.5, origin[0] + cameraSizeCM[0] / 2 - 20, 1.5);
+  ctx.stroke();
+}
