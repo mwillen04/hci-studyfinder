@@ -1,4 +1,5 @@
 var currentQuestion = 1;
+const totalQuestions = 6; // Set this to the total number of questions
 
 function answerQuestion(questionNumber, answer) {
   console.log(`Answered Question ${questionNumber}: ${answer}`);
@@ -17,18 +18,29 @@ function showQuestion(questionNumber) {
   if (targetQuestion) {
     targetQuestion.style.display = 'block';
     currentQuestion = questionNumber;
+    updateBackButtonVisibility();
   }
 }
 
-// document.getElementById('backButton').addEventListener('click', function () {
-//   showQuestion(currentQuestion - 1); // Decrement and show the previous question
-// });
+function updateBackButtonVisibility() {
+  const backButton = $("#backButton");
+  if (currentQuestion === 1) {
+    backButton.hide();
+  } else {
+    backButton.show();
+  }
+}
 
 $(document).ready(function () {
-  // frames.start();
   showQuestion(1);
   $("#backButton").hide(); // Initially hide the back button
+  $('#backButton').click(function () {
+    if (currentQuestion > 1) {
+      showQuestion(currentQuestion - 1);
+    }
+  });
 });
+
 
 var frames = {
   socket: null,

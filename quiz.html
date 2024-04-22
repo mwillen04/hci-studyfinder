@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Study Spot Finder</title>
@@ -7,15 +8,70 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
+    <!-- Page 1: -->
     <div class="question-container" id="question1">
         <div class="question">Where would you like to study?</div>
         <div class="buttons">
-            <button onclick="answerQuestion(1, 'Library')">Library</button>
+            <button onclick="answerQuestion(1, 'On Campus')">On Campus</button>
             <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(1, 'Cafe')">Cafe</button>
+            <button onclick="answerQuestion(1, 'Off Campus')">Off Campus</button>
+        </div>
+    </div>
+
+    <!-- Page 2: -->
+    <div class="question-container" id="question2">
+        <div class="question">What volume level do you prefer?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(2, 'Quiet')">Quiet</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(2, 'Loud')">Loud</button>
+        </div>
+    </div>
+
+    <!-- Page 3: -->
+    <div class="question-container" id="question3">
+        <div class="question">How busy are you comfortable with?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(3, 'Busy')">Busy</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(3, 'Sparse')">Sparse</button>
+        </div>
+    </div>
+
+    <!-- Page 4: -->
+    <div class="question-container" id="question4">
+        <div class="question">How bright would you like your study spot?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(3, 'Bright')">Bright</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(3, 'Dark')">Dark</button>
+        </div>
+    </div>
+
+    <!-- Page 5: -->
+    <div class="question-container" id="question5">
+        <div class="question">What kind of light do you prefer?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(3, 'Natural')">Natural</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(3, 'Artificial')">Artificial</button>
+        </div>
+    </div>
+
+    <!-- Page 6: -->
+    <div class="question-container" id="question6">
+        <div class="question">Do you want to study indoors or outdoors?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(3, 'Indoors')">Indoors</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(3, 'Outdoors')">Outdoors</button>
         </div>
     </div>
     <button id="backButton">Back</button>
+
+
 </body>
+
 </html>
