@@ -1,102 +1,101 @@
 var currentQuestion = 1;
-const totalQuestions = 9;
+const totalQuestions = 10;
 var answers = {}; // Object to store answers
 const locations = {
   "HLH17": {
     "mapLink": "https://maps.app.goo.gl/hZgn5LoPdjB8nVDZ6",
-    "onCampus": true,
-    "quiet": true,
-    "busy": false,
-    "naturalLight": true,
-    "bright": true,
-    "indoors": true,
-    "privateCubicles": false,
-    "desktopComputers": true,
-    "yaleIdRequired": true
+    "Q1": true, //onCampus
+    "Q2": true, //quiet
+    "Q3": false, //busy
+    "Q4": true, //natural light
+    "Q5": true, //bright
+    "Q6": true, //indoors 
+    "Q7": false, //private cubicles
+    "Q8": true, //desktop computers
+    "Q9": true // yale id required
   },
   "SML": {
     "mapLink": "https://maps.app.goo.gl/v6q3KBZ4EmhpJX2f7",
-    "onCampus": true,
-    "quiet": true,
-    "busy": false,
-    "naturalLight": true,
-    "bright": true,
-    "indoors": true,
-    "privateCubicles": true,
-    "desktopComputers": true,
-    "yaleIdRequired": false
+    "Q1": true, //onCampus
+    "Q2": true, //quiet
+    "Q3": true, //busy
+    "Q4": true, //natural light
+    "Q5": false, //bright
+    "Q6": true, //indoors 
+    "Q7": false, //private cubicles
+    "Q8": true, //desktop computers
+    "Q9": false // yale id required
   },
   "Bass": {
     "mapLink": "https://maps.app.goo.gl/JnYY86DLv5qN3kez9",
-    "onCampus": true,
-    "quiet": true,
-    "busy": false,
-    "naturalLight": true,
-    "bright": true,
-    "indoors": true,
-    "privateCubicles": true,
-    "desktopComputers": true,
-    "yaleIdRequired": false
+    "Q1": true, //onCampus
+    "Q2": true, //quiet
+    "Q3": true, //busy
+    "Q4": false, //natural light
+    "Q5": true, //bright
+    "Q6": true, //indoors 
+    "Q7": true, //private cubicles
+    "Q8": true, //desktop computers
+    "Q9": false // yale id required
   },
   "Steep": {
     "mapLink": "https://maps.app.goo.gl/AH4HYguQzwfW7NYV6",
-    "onCampus": true,
-    "quiet": false,
-    "busy": false,
-    "naturalLight": false,
-    "bright": false,
-    "indoors": true,
-    "privateCubicles": false,
-    "desktopComputers": false,
-    "yaleIdRequired": true
+    "Q1": true, //onCampus
+    "Q2": false, //quiet
+    "Q3": true, //busy
+    "Q4": true, //natural light
+    "Q5": true, //bright
+    "Q6": true, //indoors 
+    "Q7": false, //private cubicles
+    "Q8": false, //desktop computers
+    "Q9": true // yale id required
   },
   "Acorn": {
     "mapLink": "https://maps.app.goo.gl/asTKYx6xssXtzQJM6",
-    "onCampus": true,
-    "quiet": false,
-    "busy": false,
-    "naturalLight": false,
-    "bright": false,
-    "indoors": true,
-    "privateCubicles": false,
-    "desktopComputers": false,
-    "yaleIdRequired": true
+    "Q1": true, //onCampus
+    "Q2": true, //quiet
+    "Q3": true, //busy
+    "Q4": true, //natural light
+    "Q5": true, //bright
+    "Q6": true, //indoors 
+    "Q7": false, //private cubicles
+    "Q8": false, //desktop computers
+    "Q9": true // yale id required
   },
   "Underground": {
     "mapLink": "https://maps.app.goo.gl/WQQxiEX4ZLgj7Cib8",
-    "onCampus": true,
-    "quiet": false,
-    "busy": false,
-    "naturalLight": false,
-    "bright": false,
-    "indoors": true,
-    "privateCubicles": false,
-    "desktopComputers": false,
-    "yaleIdRequired": true
+    "Q1": true, //onCampus
+    "Q2": false, //quiet
+    "Q3": true, //busy
+    "Q4": false, //natural light
+    "Q5": true, //bright
+    "Q6": true, //indoors 
+    "Q7": false, //private cubicles
+    "Q8": false, //desktop computers
+    "Q9": false // yale id required
   },
   "Koffee": {
     "mapLink": "https://maps.app.goo.gl/Z9aJg3HGtTXKiyyj7",
-    "onCampus": false,
-    "quiet": false,
-    "busy": false,
-    "naturalLight": true,
-    "bright": true,
-    "indoors": true,
-    "privateCubicles": true,
-    "desktopComputers": false,
-    "yaleIdRequired": false
+    "Q1": false, //onCampus
+    "Q2": true, //quiet
+    "Q3": true, //busy
+    "Q4": true, //natural light
+    "Q5": true, //bright
+    "Q6": true, //indoors 
+    "Q7": true, //private cubicles
+    "Q8": false, //desktop computers
+    "Q9": false // yale id required
   },
   "Atticus": {
     "mapLink": "https://maps.app.goo.gl/kiN6FyCFv8h3ywbQ6",
-    "onCampus": false,
-    "quiet": false,
-    "busy": false,
-    "naturalLight": true,
-    "bright": true,
-    "indoors": true,
-    "privateCubicles": false,
-    "desktopComputers": false,
-    "yaleIdRequired": false
+    "Q1": false, //onCampus
+    "Q2": false, //quiet
+    "Q3": true, //busy
+    "Q4": true, //natural light
+    "Q5": true, //bright
+    "Q6": true, //indoors 
+    "Q7": false, //private cubicles
+    "Q8": false, //desktop computers
   }
 };
 
@@ -111,10 +110,9 @@ function getResult() {
 
     // Compare each answer to the corresponding field in the location
     for (const question in answers) {
-      const fieldName = questionToFieldName(question);
-      if (fieldName && locations[location].hasOwnProperty(fieldName)) {
+      if (question && locations[location].hasOwnProperty(question)) {
         const fieldValue = answers[question];
-        const locationValue = locations[location][fieldName];
+        const locationValue = locations[location][question];
 
         // If the answer matches the location's value, increase the score
         if (fieldValue === locationValue) {
@@ -138,6 +136,7 @@ function showResult() {
   if (result) {
     console.log(`Your best study spot is: ${result}`);
     console.log(`Map Link: ${locations[result].mapLink}`);
+    //TODO- integrate result.html
   } else {
     console.log("No suitable study spot found.");
   }
