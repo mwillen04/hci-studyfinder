@@ -49,7 +49,7 @@ p {
 }
 
 .question-container {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     position: absolute;
