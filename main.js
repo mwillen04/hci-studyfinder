@@ -1,10 +1,157 @@
 var currentQuestion = 1;
-const totalQuestions = 6; // Set this to the total number of questions
+const totalQuestions = 9;
+var answers = {}; // Object to store answers
+const locations = {
+  "HLH17": {
+    "mapLink": "https://maps.app.goo.gl/hZgn5LoPdjB8nVDZ6",
+    "onCampus": true,
+    "quiet": true,
+    "busy": false,
+    "naturalLight": true,
+    "bright": true,
+    "indoors": true,
+    "privateCubicles": false,
+    "desktopComputers": true,
+    "yaleIdRequired": true
+  },
+  "SML": {
+    "mapLink": "https://maps.app.goo.gl/v6q3KBZ4EmhpJX2f7",
+    "onCampus": true,
+    "quiet": true,
+    "busy": false,
+    "naturalLight": true,
+    "bright": true,
+    "indoors": true,
+    "privateCubicles": true,
+    "desktopComputers": true,
+    "yaleIdRequired": false
+  },
+  "Bass": {
+    "mapLink": "https://maps.app.goo.gl/JnYY86DLv5qN3kez9",
+    "onCampus": true,
+    "quiet": true,
+    "busy": false,
+    "naturalLight": true,
+    "bright": true,
+    "indoors": true,
+    "privateCubicles": true,
+    "desktopComputers": true,
+    "yaleIdRequired": false
+  },
+  "Steep": {
+    "mapLink": "https://maps.app.goo.gl/AH4HYguQzwfW7NYV6",
+    "onCampus": true,
+    "quiet": false,
+    "busy": false,
+    "naturalLight": false,
+    "bright": false,
+    "indoors": true,
+    "privateCubicles": false,
+    "desktopComputers": false,
+    "yaleIdRequired": true
+  },
+  "Acorn": {
+    "mapLink": "https://maps.app.goo.gl/asTKYx6xssXtzQJM6",
+    "onCampus": true,
+    "quiet": false,
+    "busy": false,
+    "naturalLight": false,
+    "bright": false,
+    "indoors": true,
+    "privateCubicles": false,
+    "desktopComputers": false,
+    "yaleIdRequired": true
+  },
+  "Underground": {
+    "mapLink": "https://maps.app.goo.gl/WQQxiEX4ZLgj7Cib8",
+    "onCampus": true,
+    "quiet": false,
+    "busy": false,
+    "naturalLight": false,
+    "bright": false,
+    "indoors": true,
+    "privateCubicles": false,
+    "desktopComputers": false,
+    "yaleIdRequired": true
+  },
+  "Koffee": {
+    "mapLink": "https://maps.app.goo.gl/Z9aJg3HGtTXKiyyj7",
+    "onCampus": false,
+    "quiet": false,
+    "busy": false,
+    "naturalLight": true,
+    "bright": true,
+    "indoors": true,
+    "privateCubicles": true,
+    "desktopComputers": false,
+    "yaleIdRequired": false
+  },
+  "Atticus": {
+    "mapLink": "https://maps.app.goo.gl/kiN6FyCFv8h3ywbQ6",
+    "onCampus": false,
+    "quiet": false,
+    "busy": false,
+    "naturalLight": true,
+    "bright": true,
+    "indoors": true,
+    "privateCubicles": false,
+    "desktopComputers": false,
+    "yaleIdRequired": false
+  }
+};
+
+
+function getResult() {
+  // Calculate the score for each location based on the answers provided
+  let bestMatch = null;
+  let bestMatchScore = -1;
+
+  for (const location in locations) {
+    let score = 0;
+
+    // Compare each answer to the corresponding field in the location
+    for (const question in answers) {
+      const fieldName = questionToFieldName(question);
+      if (fieldName && locations[location].hasOwnProperty(fieldName)) {
+        const fieldValue = answers[question];
+        const locationValue = locations[location][fieldName];
+
+        // If the answer matches the location's value, increase the score
+        if (fieldValue === locationValue) {
+          score++;
+        }
+      }
+    }
+
+    // Update the best match if the current location has a higher score
+    if (score > bestMatchScore) {
+      bestMatch = location;
+      bestMatchScore = score;
+    }
+  }
+
+  return bestMatch;
+}
+
+function showResult() {
+  const result = getResult();
+  if (result) {
+    console.log(`Your best study spot is: ${result}`);
+    console.log(`Map Link: ${locations[result].mapLink}`);
+  } else {
+    console.log("No suitable study spot found.");
+  }
+}
 
 function answerQuestion(questionNumber, answer) {
   console.log(`Answered Question ${questionNumber}: ${answer}`);
+
+  // Store the answer in the answers object
+  console.log(answers[`Q${questionNumber}`] = answer);
+
   showQuestion(questionNumber + 1);
 }
+
 
 function skipQuestion() {
   console.log("Skipped Question");
