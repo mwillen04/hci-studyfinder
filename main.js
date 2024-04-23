@@ -96,11 +96,25 @@ const locations = {
     "Q6": true, //indoors 
     "Q7": false, //private cubicles
     "Q8": false, //desktop computers
+    "Q9": false // yale id required
   }
 };
 
 
 function getResult() {
+  // Define weights for each criterion
+  const weights = {
+    "Q1": 3, // onCampus
+    "Q2": 2, // quiet
+    "Q3": 1, // busy
+    "Q4": 2, // natural light
+    "Q5": 2, // bright
+    "Q6": 2, // indoors
+    "Q7": 1, // private cubicles
+    "Q8": 1, // desktop computers
+    "Q9": 1  // yale id required
+  };
+
   // Calculate the score for each location based on the answers provided
   let bestMatch = null;
   let bestMatchScore = -1;
@@ -116,7 +130,7 @@ function getResult() {
 
         // If the answer matches the location's value, increase the score
         if (fieldValue === locationValue) {
-          score++;
+          score += weights[question];
         }
       }
     }
@@ -127,13 +141,15 @@ function getResult() {
       bestMatchScore = score;
     }
   }
-
+  console.log(`Your best match score: ${bestMatchScore}`);
   return bestMatch;
 }
+
 
 function showResult() {
   const result = getResult();
   if (result) {
+    console.log(`Your answers: ${answers}`);
     console.log(`Your best study spot is: ${result}`);
     console.log(`Map Link: ${locations[result].mapLink}`);
     //TODO- integrate result.html
