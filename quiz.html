@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Study Spot Finder</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src = "./main.js"></script>
+</head>
+
+<body>
+    <!-- Page 1: -->
+    <div class="question-container" id="question1">
+        <div class="question">Where would you like to study?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(1, 'On Campus')">On Campus</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(1, 'Off Campus')">Off Campus</button>
+        </div>
+    </div>
+
+    <!-- Page 2: -->
+    <div class="question-container" id="question2">
+        <div class="question">What volume level do you prefer?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(2, 'Quiet')">Quiet</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(2, 'Loud')">Loud</button>
+        </div>
+    </div>
+
+    <!-- Page 3: -->
+    <div class="question-container" id="question3">
+        <div class="question">How busy are you comfortable with?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(3, 'Busy')">Busy</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(3, 'Sparse')">Sparse</button>
+        </div>
+    </div>
+
+    <!-- Page 4: -->
+    <div class="question-container" id="question5">
+        <div class="question">What kind of light do you prefer?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(5, 'Natural')">Natural</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(5, 'Artificial')">Artificial</button>
+        </div>
+    </div>
+    
+
+    <!-- Page 5: -->
+    <div class="question-container" id="question4">
+        <div class="question">How bright would you like your study spot?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(4, 'Bright')">Bright</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(4, 'Dark')">Dark</button>
+        </div>
+    </div>
+
+    <!-- Page 6: -->
+    <div class="question-container" id="question6">
+        <div class="question">Do you want to study indoors or outdoors?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(6, 'Indoors')">Indoors</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(6, 'Outdoors')">Outdoors</button>
+        </div>
+    </div>
+    <!-- Page 7: -->
+    <div class="question-container" id="question7">
+        <div class="question">Do you need private cubicles?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(7, 'Yes')">Yes</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(7, 'No')">No</button>
+        </div>
+    </div>
+    
+    <!-- Page 8: -->
+    <div class="question-container" id="question8">
+        <div class="question">Do you need desktop computers?</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(8, 'Yes')">Yes</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(8, 'No')">No</button>
+        </div>
+    </div>
+    
+    <!-- Page 9: -->
+    <div class="question-container" id="question9">
+        <div class="question">Do you have a Yale ID</div>
+        <div class="buttons">
+            <button onclick="answerQuestion(9, 'Yes')">Yes</button>
+            <button onclick="skipQuestion()">Skip</button>
+            <button onclick="answerQuestion(9, 'No')">No</button>
+        </div>
+    </div>
+    
+
+    <!-- Final Page: -->
+    <div class="question-container" id="question10">
+        <div class="question">Would you like to see your study spot result?</div>
+        <div class="buttons">
+            <button onclick="showResult()">Yes</button>
+            <button onclick="skipQuestion()">No</button>
+        </div>
+    </div>
+
+    <button id="backButton">Back</button>
+
+
+</body>
+
+</html>
