@@ -20,7 +20,8 @@ Our project takes input from the closest person to the screen, so the user must 
 
 **COLLABORATION RECORD**
 
-Zev:
+Zev: Helped build the algorithm to match user input to a study location in main.js. Helped with the asthetic deisgn and the integration of the buttons for each question and the back button. Tested the motion sensors. 
+
 
 
 
