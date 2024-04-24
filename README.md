@@ -16,7 +16,7 @@ The specific tasks we chose to address with our prototype are to choose a study 
 
 **CONSTRAINTS**
 
-Our project takes input from the closest person to the screen, so the user must make sure that their kinect frame is the one closest to the sensor before using our program.
+Our project takes input from the closest person to the screen, so the user must make sure that their kinect frame is the one closest to the sensor before using our program. There is also a maximum range, so it is recommended that they position themselves so that their head is near the center of the screen.
 
 **COLLABORATION RECORD**
 
