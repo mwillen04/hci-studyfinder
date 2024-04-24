@@ -19,11 +19,16 @@
         </div>
     </div>
 
-    <button id="backButton">Back</button>
+    <button id="backButton" onclick="goBack()">Back</button>
 
     <script>
         let question_id = 1;
         
+
+        function goBack() {
+            question_id = question_id - 1;
+            renderQuestion();
+        }
         function triggerButton(buttonId) {
             const button = document.getElementById(buttonId);
             button.style.backgroundColor = "green"; 
