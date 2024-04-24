@@ -30,6 +30,16 @@
         </ul>
     </div>
 
+    <aside class="answer-box">
+        <p style="font-family: 'Times New Roman', Times, serif;"><b>Answers:</b></p>
+        <div id="answerList"></div>
+    </aside>
+
+    <aside class="answer-box">
+        <p style="font-family: 'Times New Roman', Times, serif;"><b>Answers:</b></p>
+        <div id="answerList"></div>
+    </aside>
+
     <!-- <button id="backButton" onclick="goBack()">Back</button> -->
 
     <script>
@@ -47,6 +57,30 @@
                 button.style.backgroundColor = ""; 
                 button.click();
             }, 1000);
+        }
+
+        function getAnswers() {
+            let answerList = ""
+
+            for (let i = 1; i < question_id; i++) {
+
+                let question = questions.find(q => q.id === i);   
+
+                console.log(answers[`Q${i}`]);
+
+                if (answers[`Q${i}`] === true) {
+                    answerList += "<p class='answerList'>" + question.text + " " + question.right + "</p>";
+                } 
+                else if (answers[`Q${i}`] === false) {
+                    answerList += "<p class='answerList'>" + question.text + " " + question.left + "</p>";
+                } 
+                else {
+                    answerList += "<p class='answerList'>" + question.text + " Skipped</p>";
+                }
+            }
+
+            $("#answerList").html(answerList);
+            console.log(answerList);
         }
 
         function answerQuestion(answer) {
@@ -73,6 +107,8 @@
 
             document.getElementById("left").textContent = question.left;
             document.getElementById("right").textContent = question.right;
+
+            getAnswers();
         }
 
         renderQuestion(0)
