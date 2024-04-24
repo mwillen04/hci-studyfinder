@@ -30,7 +30,7 @@ Maks: created class that handles connection with camera and detects when either 
 
 
 
-Michael:
+Michael: Fine-tuned and fixed selection algorithm, added display box for previous answers (+ relevant js/html/css), organized layout of boxes, general CSS contributions and on-site bug fixing and workshopping our project on the TV.
 
 
 

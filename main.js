@@ -69,7 +69,7 @@ const questions = [
 ];
 
 const locations = {
-    "HLH17": {
+    "17 Hillhouse Ave.": {
         "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5993.644023422849!2d-72.9234571!3d41.3127355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d9bec7f69953%3A0x9dd15d5ee9fcfb36!2sYale%2017%20Hillhouse%20Avenue%20(HLH17)!5e0!3m2!1sen!2sus!4v1713927332844!5m2!1sen!2sus",
         "Q1": true, //onCampus
         "Q2": true, //quiet
@@ -81,7 +81,7 @@ const locations = {
         "Q8": true, //desktop computers
         "Q9": true // yale id required
     },
-    "SML": {
+    "Sterling Memorial Library": {
         "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5993.801076599505!2d-72.92851089999999!3d41.3110273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d9b6a8924c77%3A0xe34726675bd29432!2sSterling%20Memorial%20Library!5e0!3m2!1sen!2sus!4v1713928546378!5m2!1sen!2sus",
         "Q1": true, //onCampus
         "Q2": true, //quiet
@@ -93,7 +93,7 @@ const locations = {
         "Q8": true, //desktop computers
         "Q9": false // yale id required
     },
-    "Bass": {
+    "Bass Library": {
         "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5993.824098113756!2d-72.92728369999999!3d41.3107769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d9b3fa5f75b9%3A0x43840ab25f0c38b7!2sBass%20Library!5e0!3m2!1sen!2sus!4v1713928568382!5m2!1sen!2sus",
         "Q1": true, //onCampus
         "Q2": true, //quiet
@@ -105,7 +105,7 @@ const locations = {
         "Q8": true, //desktop computers
         "Q9": false // yale id required
     },
-    "Steep": {
+    "Steep Cafe": {
         "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.6158081251942!2d-72.92226889999999!3d41.3172208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d9b8766acfc3%3A0x71ed0aa35f40275a!2sSteep%20(formerly%20KBT%20Caf%C3%A9)!5e0!3m2!1sen!2sus!4v1713928584635!5m2!1sen!2sus",
         "Q1": true, //onCampus
         "Q2": false, //quiet
@@ -117,7 +117,7 @@ const locations = {
         "Q8": false, //desktop computers
         "Q9": true // yale id required
     },
-    "Acorn": {
+    "The Acorn, Silliman College": {
         "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5993.766553307467!2d-72.92525739999999!3d41.311402799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d9b68203ab59%3A0xc27918c2bc4b4d9d!2sThe%20Silliman%20Acorn!5e0!3m2!1sen!2sus!4v1713928603054!5m2!1sen!2sus",
         "Q1": true, //onCampus
         "Q2": true, //quiet
@@ -129,7 +129,7 @@ const locations = {
         "Q8": false, //desktop computers
         "Q9": true // yale id required
     },
-    "Underground": {
+    "The Underground": {
         "mapLink": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2996.8723587685595!2d-72.9286454!3d41.3116403!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d99d1c93a6a3%3A0x79e7bf93c262887!2sYale%20Ivy!5e0!3m2!1sen!2sus!4v1713928620961!5m2!1sen!2sus",
         "Q1": true, //onCampus
         "Q2": false, //quiet
