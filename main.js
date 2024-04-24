@@ -280,7 +280,7 @@ class GestureRecognition {
         // console.log("HEAD", headHeight);
         // console.log("RIGHT", rightHand);
         // console.log("LEFT", leftHand);
-      const timeoutDuration = 1000;
+      const timeoutDuration = 2000;
         // Check both hands raised condition first
         if (rightRaised && leftRaised) {
             if (!this.bothHandsTimer) {
