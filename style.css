@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     background-color: #fcf7d9;
     /* Light yellow background */
     margin: 0;
@@ -135,6 +135,7 @@ p {
     flex-grow: 1;
     margin: 0 30px;
     /* Adjusted margin */
+    font-family: 'Times New Roman', Times, serif;
 }
 
 button:first-child {
