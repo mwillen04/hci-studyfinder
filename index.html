@@ -4,41 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Study Spot Finder</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="./main.js"></script>
-
+  <script src="main.js"></script>
 </head>
 
 <body>
   <div class="home-screen">
     <img src="logo.png" alt="Small Logo" class="small-logo">
     <h1>Looking for a new study spot?</h1>
-    <p>Raise either hands to begin a short quiz to find one!</p>
+    <p>Raise either hand to begin a short quiz to find one!</p>
     <img src="arm.png" alt="Large Logo" class="large-logo">
   </div>
-  <!-- <div style="width:100%; text-align:center;"> -->
-  <!-- <canvas id="draw" height="500" width="1000"
-          style="border: 1px solid #111111; margin: auto; position: relative;"></canvas> -->
-  <!-- <div class="people_counter">I see 0 people</div> -->
-
-  <!-- <div class="question-container" id="question1">
-            <div class="question">Where would you like to study?</div>
-            <div class="buttons">
-                <button onclick="answerQuestion(1, 'Library')">Library</button>
-                <button onclick="skipQuestion()">Skip</button>
-                <button onclick="answerQuestion(1, 'Cafe')">Cafe</button>
-            </div>
-        </div> -->
-
-  <!-- Additional question containers would follow the same pattern -->
-
-  <!-- </div> -->
-
-  <!-- Back Button positioned at the bottom left -->
-  <!-- <button id="backButton" style="position: absolute; bottom: 10px; left: 10px;">Back</button> -->
-
+  <script>
+    let next_page = function () {
+      window.location.href = 'quiz.html';
+    }    
+    const gestureRecognition = new GestureRecognition(
+      "cpsc484-04.stdusr.yale.internal:8888",
+      next_page, next_page, next_page
+    );
+    gestureRecognition.startConnection();
+  </script>
 </body>
-
 </html>
