@@ -280,14 +280,14 @@ class GestureRecognition {
         // console.log("HEAD", headHeight);
         // console.log("RIGHT", rightHand);
         // console.log("LEFT", leftHand);
-    
+      const timeoutDuration = 1000;
         // Check both hands raised condition first
         if (rightRaised && leftRaised) {
             if (!this.bothHandsTimer) {
                 this.bothHandsTimer = setTimeout(() => {
                     this.bothHandsCallback();
                     this.bothHandsTimer = null;
-                }, 2000);
+                }, timeoutDuration);
             }
             // Clear individual hand timers if they are set
             if (this.rightHandTimer) {
@@ -310,7 +310,7 @@ class GestureRecognition {
                 this.rightHandTimer = setTimeout(() => {
                     this.rightHandCallback();
                     this.rightHandTimer = null;
-                }, 2000);
+                }, timeoutDuration);
             } else if (!rightRaised && this.rightHandTimer) {
                 clearTimeout(this.rightHandTimer);
                 this.rightHandTimer = null;
@@ -321,7 +321,7 @@ class GestureRecognition {
                 this.leftHandTimer = setTimeout(() => {
                     this.leftHandCallback();
                     this.leftHandTimer = null;
-                }, 2000);
+                }, timeoutDuration);
             } else if (!leftRaised && this.leftHandTimer) {
                 clearTimeout(this.leftHandTimer);
                 this.leftHandTimer = null;
