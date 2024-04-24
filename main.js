@@ -286,10 +286,6 @@ class GestureRecognition {
         const rightRaised = rightHand.y > headHeight.y;
         const leftRaised  = leftHand.y > headHeight.y;
 
-        console.log("HEAD", headHeight);
-        console.log("RIGHT", rightHand);
-        console.log("LEFT", leftHand);
-
         const timeoutDuration = 2000;
         // Check both hands raised condition first
         if (rightRaised && leftRaised) {
@@ -339,61 +335,3 @@ class GestureRecognition {
         }
     }
 }
-
-/*
-function findClosestPerson(people) {
-    if (people.length === 0) {
-        return null;
-    }
-
-    let closestPerson = people[0];
-    let smallestDistance = Math.sqrt(closestPerson.x_pos ** 2 + closestPerson.y_pos ** 2);
-
-    for (let i = 1; i < people.length; i++) {
-        let currentPerson = people[i];
-        let currentDistance = Math.sqrt(currentPerson.x_pos ** 2 + currentPerson.y_pos ** 2);
-
-        if (currentDistance < smallestDistance) {
-            smallestDistance = currentDistance;
-            closestPerson = currentPerson;
-        }
-    }
-    return closestPerson;
-}
-
-function checkHandRaised(person, screenWidth, screenHeight) {
-    if (!person) 
-        return;
-
-    function normalizePosition(position) {
-        return {
-            x: position.x + screenWidth / 2,
-            y: screenHeight / 2 - position.y
-        };
-    }
-
-    const rightHand = normalizePosition(person.joints[15].position);
-    const leftHand = normalizePosition(person.joints[8].position);
-    const headHeight = normalizePosition(person.joints[26].position);
-
-    console.log("HEAD", headHeight);
-    console.log("RIGHT", rightHand);
-    console.log("LEFT", leftHand);
-}
-
-function start_connection() {
-    const url = "ws://cpsc484-04.stdusr.yale.internal:8888/frames";
-    console.log(`connecting to ${host}`);
-
-    frames.socket = new WebSocket(url);
-
-    frames.socket.onmessage = function (event) {
-        let data = JSON.parse(event.data);
-
-        if (data.people) {
-            checkHandRaised(findClosestPerson(data.people), window.innerWidth, window.innerHeight);
-        }
-    }
-}
-
-*/
