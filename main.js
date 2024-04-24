@@ -7,55 +7,64 @@ const questions = [
         id: 1,
         text: "Where would you like to study?",
         left: "Off Campus",
-        right: "On Campus"
+        right: "On Campus",
+        img: "outdoor.jpeg"
     },
     {
         id: 2,
         text: "What volume level do you prefer?",
         left: "Loud", 
-        right: "Quiet"
+        right: "Quiet",
+        img: "group.jpeg"
     },
     {
         id: 3,
         text: "How busy should the space be?",
         left: "Sparse",
-        right: "Busy"
+        right: "Busy",
+        img: "busy.jpeg"
     },
     {
         id: 4,
         text: "What kind of light do you prefer?",
         left: "Artificial",
-        right: "Natural"
+        right: "Natural",
+        img: "light.jpeg"
     },
     {
         id: 5,
         text: "How bright would you like your study spot?",
         left: "Dark",
-        right: "Bright"
+        right: "Bright",
+        img: "dark.jpeg"
     },
     {
         id: 6,
         text: "Do you want to study indoors or outdoors?",
         left: "Outdoors",
-        right: "Indoors"
+        right: "Indoors",
+        img: "out.jpeg"
     },
     {
         id: 7,
         text: "Do you need private cubicles?",
         left: "No",
-        right: "Yes"
+        right: "Yes",
+        img: "private.jpeg"
     },
     {
         id: 8,
         text: "Do you need desktop computers?",
         left: "No",
-        right: "Yes"
+        right: "Yes",
+        img: "comp.jpeg"
     },
     {
         id: 9,
         text: "Do you have a Yale ID",
         left: "No",
-        right: "Yes"
+        right: "Yes",
+        img: "id.jpeg"
     },
 ];
 
@@ -277,10 +286,11 @@ class GestureRecognition {
         const rightRaised = rightHand.y > headHeight.y;
         const leftRaised  = leftHand.y > headHeight.y;
 
-        // console.log("HEAD", headHeight);
-        // console.log("RIGHT", rightHand);
-        // console.log("LEFT", leftHand);
-      const timeoutDuration = 2000;
+        console.log("HEAD", headHeight);
+        console.log("RIGHT", rightHand);
+        console.log("LEFT", leftHand);
+
+        const timeoutDuration = 2000;
         // Check both hands raised condition first
         if (rightRaised && leftRaised) {
             if (!this.bothHandsTimer) {

@@ -25,7 +25,7 @@ Zev:
 
 
 
-Maks:
+Maks: created class that handles connection with camera and detects when either right, left, or both hands have been raised for more then 2 seconds. Then uses a callback system to communicate with the frontend and add actual functionality. Created the homepage and quiz html pages. 
 
 
 

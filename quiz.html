@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+    <div class="background-image"></div>
     <div class="question-container">
         <div class="question">gfdgfd</div>
         <div class="buttons">
@@ -28,7 +30,7 @@
         </ul>
     </div>
 
-    <button id="backButton" onclick="goBack()">Back</button>
+    <!-- <button id="backButton" onclick="goBack()">Back</button> -->
 
     <script>
         let question_id = 1;
@@ -63,9 +65,11 @@
         }
 
         function renderQuestion() {
-            const question = questions.find(q => q.id === question_id);   
+            const question = questions.find(q => q.id === question_id);
+            const imagePath = "./images/" + question.img;
             const questionTextElement = document.querySelector('.question');
             questionTextElement.innerHTML = question.text;
+            document.querySelector('.background-image').style.backgroundImage = `url('${imagePath}')`;
 
             document.getElementById("left").textContent = question.left;
             document.getElementById("right").textContent = question.right;
