@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fcf7d9;
+    /* Light yellow background */
     margin: 0;
     display: flex;
     justify-content: center;
@@ -10,37 +11,42 @@ body {
 
 .home-screen {
     text-align: center;
-    background-color: white;
+    background-color: #ffffff;
+    /* White background */
     padding: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Increased shadow for depth */
+    border-radius: 20px;
+    /* Rounded corners */
 }
 
 h1 {
     font-size: 28px;
-    color: #333;
+    color: #2c3e50;
+    /* Dark blue heading color */
 }
 
 p {
     font-size: 18px;
-    color: #666;
+    color: #34495e;
+    /* Slightly darker blue text color */
 }
 
 .small-logo {
-    height: 50px; 
-    vertical-align: middle; 
-    margin-right: 10px; 
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 .large-logo {
-    display: block; 
-    margin: 20px auto; 
+    display: block;
+    margin: 20px auto;
     width: 200px;
     height: 200px;
 }
 
 .question-container {
-    display: flex !important; 
+    display: flex !important;
     flex-direction: column;
     align-items: center;
     position: absolute;
@@ -48,15 +54,18 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    /* width: 500px; */
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: white;
-    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Increased shadow for depth */
+    background: #ffffff;
+    /* White background */
+    border-radius: 20px;
+    /* Rounded corners */
 }
 
 .question {
-    font-size: 80px;
+    font-size: 60px;
+    /* Slightly smaller font size */
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -66,28 +75,32 @@ p {
     justify-content: space-between;
     width: 100%;
     height: 100px;
-    padding: 0 10px; /* Add padding to the container to maintain space at edges */
+    padding: 0 10px;
 }
 
 .buttons button {
-    font-size: 30px;
-    padding: 10px 16px; /* Corrected typo from '06px' to '16px' */
+    font-size: 24px;
+    /* Smaller font size */
+    padding: 12px 20px;
+    /* Slightly larger padding */
     cursor: pointer;
     flex-grow: 1;
-    margin: 0 50px; 
+    margin: 0 30px;
+    /* Adjusted margin */
 }
 
 button:first-child {
-    margin-left: 0; 
+    margin-left: 0;
 }
 
 button:last-child {
-    margin-right: 0; 
+    margin-right: 0;
 }
 
 #backButton {
     font-size: 18px;
-    padding: 10px 20px;
+    padding: 12px 24px;
+    /* Slightly larger padding */
     cursor: pointer;
     position: absolute;
     bottom: 10px;
@@ -98,15 +111,19 @@ button:last-child {
     width: 80%;
     max-width: 1200px;
     margin: auto;
-    background-color: white;
+    background-color: #ffffff;
+    /* White background */
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Increased shadow for depth */
+    border-radius: 20px;
+    /* Rounded corners */
 }
 
 #location-title {
     font-size: 24px;
-    color: #333;
+    color: #2c3e50;
+    /* Dark blue heading color */
     text-align: center;
     margin-bottom: 20px;
 }
@@ -121,16 +138,19 @@ iframe#google-map {
 ul.properties {
     list-style: none;
     padding: 0;
-    display: flex;  /* Ensures flexbox layout */
-    flex-wrap: wrap;  /* Allows items to wrap onto the next line */
-    justify-content: center;  /* Centers items horizontally */
-    gap: 10px;  /* Maintains space between bubbles */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 ul.properties li {
-    background-color: #e7f4ff;
-    padding: 10px 20px;
-    border-radius: 20px;  /* Gives a rounded appearance */
-    margin: 5px;  /* Adds spacing around each bubble */
-    white-space: nowrap;  /* Prevents text from wrapping inside the bubble */
+    background-color: #dff0d8;
+    /* Light green background */
+    padding: 12px 24px;
+    /* Slightly larger padding */
+    border-radius: 20px;
+    /* Rounded corners */
+    margin: 5px;
+    white-space: nowrap;
 }
