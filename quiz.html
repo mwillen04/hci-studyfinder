@@ -4,116 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Study Spot Finder</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src = "./main.js"></script>
 </head>
 
 <body>
-    <!-- Page 1: -->
-    <div class="question-container" id="question1">
-        <div class="question">Where would you like to study?</div>
+    <div class="question-container">
+        <div class="question">gfdgfd</div>
         <div class="buttons">
-            <button onclick="answerQuestion(1, true)">On Campus</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(1, false)">Off Campus</button>
-        </div>
-    </div>
-
-    <!-- Page 2: -->
-    <div class="question-container" id="question2">
-        <div class="question">What volume level do you prefer?</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(2, true)">Quiet</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(2, false)">Loud</button>
-        </div>
-    </div>
-
-    <!-- Page 3: -->
-    <div class="question-container" id="question3">
-        <div class="question">How busy are you comfortable with?</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(3, true)">Busy</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(3, false)">Sparse</button>
-        </div>
-    </div>
-
-    <!-- Page 4: -->
-    <div class="question-container" id="question5">
-        <div class="question">What kind of light do you prefer?</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(5, true)">Natural</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(5, false)">Artificial</button>
-        </div>
-    </div>
-    
-
-    <!-- Page 5: -->
-    <div class="question-container" id="question4">
-        <div class="question">How bright would you like your study spot?</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(4, true)">Bright</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(4, false)">Dark</button>
-        </div>
-    </div>
-
-    <!-- Page 6: -->
-    <div class="question-container" id="question6">
-        <div class="question">Do you want to study indoors or outdoors?</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(6, true)">Indoors</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(6, false)">Outdoors</button>
-        </div>
-    </div>
-    <!-- Page 7: -->
-    <div class="question-container" id="question7">
-        <div class="question">Do you need private cubicles?</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(7, true)">Yes</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(7, false)">No</button>
-        </div>
-    </div>
-    
-    <!-- Page 8: -->
-    <div class="question-container" id="question8">
-        <div class="question">Do you need desktop computers?</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(8, true)">Yes</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(8, false)">No</button>
-        </div>
-    </div>
-    
-    <!-- Page 9: -->
-    <div class="question-container" id="question9">
-        <div class="question">Do you have a Yale ID</div>
-        <div class="buttons">
-            <button onclick="answerQuestion(9, true)">Yes</button>
-            <button onclick="skipQuestion()">Skip</button>
-            <button onclick="answerQuestion(9, false)">No</button>
-        </div>
-    </div>
-    
-
-    <!-- Final Page: -->
-    <div class="question-container" id="question10">
-        <div class="question">Would you like to see your study spot result?</div>
-        <div class="buttons">
-            <button onclick="showResult()">Yes</button>
-            <button onclick="skipQuestion()">No</button>
+            <button id="left" onclick="answerQuestion(false)">gfdg</button>
+            <button id="skip" onclick="answerQuestion(null)">Skip</button>
+            <button id="right" onclick="answerQuestion(true)">gfdgfd</button>
         </div>
     </div>
 
     <button id="backButton">Back</button>
 
+    <script>
+        let question_id = 1;
+        
+        function triggerButton(buttonId) {
+            const button = document.getElementById(buttonId);
+            button.style.backgroundColor = "green"; 
+            setTimeout(() => {
+                button.style.backgroundColor = ""; 
+                button.click();
+            }, 1000);
+        }
 
+        function answerQuestion(answer) {
+            console.log(`Answered Question ${question_id}: ${answer}`);
+            console.log(answers[`Q${question_id}`] = answer);
+
+            ++question_id;
+
+            if (question_id === totalQuestions) {
+                const result = getResult()
+                window.location.href = `result.html?loc=${encodeURIComponent(result)}`;
+            } else {
+                renderQuestion()    
+            }       
+
+        }
+
+        function renderQuestion() {
+            const question = questions.find(q => q.id === question_id);   
+            const questionTextElement = document.querySelector('.question');
+            questionTextElement.innerHTML = question.text;
+
+            document.getElementById("left").textContent = question.left;
+            document.getElementById("right").textContent = question.right;
+        }
+
+        renderQuestion(0)
+
+        const gestureRecognition = new GestureRecognition(
+            "cpsc484-04.stdusr.yale.internal:8888",
+            () => { triggerButton('right'); },
+            () => { triggerButton('left'); },
+            () => { triggerButton('skip'); }
+        );
+        gestureRecognition.startConnection();
+        
+            // $("#backButton").hide(); // Initially hide the back button
+            // $('#backButton').click(function () {
+            //     // if (currentQuestion > 1) {
+            //     //     showQuestion(currentQuestion - 1);
+            //     // }
+            // })
+
+    </script>
 </body>
 
 </html>
