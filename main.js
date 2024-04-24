@@ -6,7 +6,7 @@ const questions = [
     {
         id: 1,
         text: "Where would you like to study?",
-        left: "Off campus",
+        left: "Off Campus",
         right: "On Campus"
     },
     {
@@ -17,7 +17,7 @@ const questions = [
     },
     {
         id: 3,
-        text: "How busy are you comfortable with?",
+        text: "How busy should the space be?",
         left: "Sparse",
         right: "Busy"
     },
