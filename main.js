@@ -57,7 +57,7 @@ const questions = [
         text: "Do you need desktop computers?",
         left: "No",
         right: "Yes",
-        img: "comp.jpeg"
+        img: "comp.png"
     },
     {
         id: 9,

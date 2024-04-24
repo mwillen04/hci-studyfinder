@@ -1,5 +1,5 @@
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Arial', Helvetica, sans-serif;
     background-color: #ffffff;
     /* Light yellow background */
     margin: 0;
@@ -123,7 +123,6 @@ p {
 
 .answerList {
     font-size: 14px;
-    font-family: 'Times New Roman', Times, serif;
 }
 
 .question {
@@ -155,7 +154,6 @@ button {
     border-radius: 10px; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
     outline: none; 
-    font-family: 'Times New Roman', Times, serif;
 }
 
 button:active {
