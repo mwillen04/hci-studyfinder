@@ -35,4 +35,4 @@ Michael:
 
 
 
-Eric:
+Eric: helped build/refactor some of the html pages, sat with Maks to troubleshoot interaction with the display, came up with some of the criteria for the heuristics, didn't touch javascript due to inexperience 
